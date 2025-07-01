@@ -35,18 +35,26 @@ while computer B takes ~1162.5 seconds(under 20 minutes).
  * significantly slower than the slower computer B running merge sort.
 */
 public class InsertionSort {
-
-    public static int[] sortArray(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            int key = array[i];
-            int j = i - 1;
-            while (j >= 0 && array[j] > key) {
-                array[j + 1] = array[j];
-                j--;
-            }
-            array[j + 1] = key;
-        }
-      return array;
+    public int[] sortArray(int[] nums) {
+		int key,j;
+        for(int i=1; i<nums.length; i++)
+		{
+			key = nums[i];
+			for(j=i-1; j>=0 && nums[j]>key; j--)
+			{
+				nums[j+1] = nums[j];
+			}
+			nums[j+1] = key;
+		}
+		return nums;
     }
 
+    public static void main(String[] args) {
+        InsertionSort sorter = new InsertionSort();
+        int[] nums = {5, 2, 9, 1, 5, 6};
+        int[] sortedArray = sorter.sortArray(nums);
+        for (int num : sortedArray) {
+            System.out.print(num + " ");
+        }
+    }
 }
